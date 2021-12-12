@@ -19,6 +19,7 @@ def createPairings(participants):
 				elif len(gifteesLeft) == 1:
 					break
 		if len(gifteesLeft) == 0:
+			print("gifter to giftee pairings created")
 			return pairMappings
 
 
@@ -30,8 +31,8 @@ def createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee):
 	for participant in list(participantToEmail.keys()):
 		context = ssl.create_default_context()
 		with smtplib.SMTP_SSL(smtpServer, port, context=context) as server:
-			message = "Subject: Secret Santa TEST\n" \
-			"Hello {},\n\nYou will be purchasing a gift for {} (but not actually because this is a test)\n\n" \
+			message = "Subject: Secret Santa\n" \
+			"Hello {},\n\nYou will be purchasing a gift for {}\n\n" \
 			"The code used to generate this email and the secret santa assignments can be found here: https://github.com/dlbeck/Secret-Santa" \
 			.format(participant, gifterToGiftee[participant])
 
@@ -41,7 +42,7 @@ def createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee):
 
 def main():
 	if len(sys.argv) != 3:
-		print("Invalid arguments. Run like 'python3 santa.py sender@email.com participantToEmail.txt'")
+		print("Invalid arguments. Run like 'python3 santa.py sender@gmail.com participantToEmail.json'")
 		sys.exit()
 	
 	senderEmail = sys.argv[1]
