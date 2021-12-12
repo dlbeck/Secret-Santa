@@ -30,16 +30,10 @@ def createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee):
 	for participant in list(participantToEmail.keys()):
 		context = ssl.create_default_context()
 		with smtplib.SMTP_SSL(smtpServer, port, context=context) as server:
-			message = """\
-			Subject: Secret Santa
-
-			Hello {},
-
-			You will be purchasing a gift for {}
-
-			The code used to generate this email and the secret santa assignments can be found here: https://github.com/dlbeck/Secret-Santa
-
-			""".format(participant, gifterToGiftee[participant])
+			message = "Subject: Secret Santa TEST\n" \
+			"Hello {},\n\nYou will be purchasing a gift for {} (but not actually because this is a test)\n\n" \
+			"The code used to generate this email and the secret santa assignments can be found here: https://github.com/dlbeck/Secret-Santa" \
+			.format(participant, gifterToGiftee[participant])
 
 			server.login(senderEmail, senderEmailpass)
 			server.sendmail(senderEmail, participantToEmail[participant], message)
