@@ -1,3 +1,5 @@
+import sys
+import json
 import smtplib, ssl
 import random
 from getpass import getpass
@@ -36,6 +38,8 @@ def createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee):
 
 			You will be purchasing a gift for {}
 
+			The code used to generate this email and the secret santa assignments can be found here: https://github.com/dlbeck/Secret-Santa
+
 			""".format(participant, gifterToGiftee[participant])
 
 			server.login(senderEmail, senderEmailpass)
@@ -43,16 +47,18 @@ def createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee):
 			print("email sent from " + senderEmail + " to " + participantToEmail[participant])
 
 def main():
-	senderEmail = "lotnsecretsanta@gmail.com"
-	participantToEmail = {
-		"Alice": "lotnsecretsanta" + "alice" + "@gmail.com",
-		"Bob": "lotnsecretsanta" + "bob" + "@gmail.com",
-		"Charlie": "lotnsecretsanta" + "charlie" + "@gmail.com",
-		"Dan": "lotnsecretsanta" + "dan" + "@gmail.com",
-    }
+	if len(sys.argv) != 3:
+		print("Invalid arguments. Run like 'python3 santa.py sender@email.com participantToEmail.txt'")
+		sys.exit()
+	
+	senderEmail = sys.argv[1]
+	with open(sys.argv[2]) as f:
+		data = f.read()
+	participantToEmail = json.loads(data)
+	  
 	gifterToGiftee = createPairings(list(participantToEmail.keys()))
 	print(gifterToGiftee)
-	# createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee)
+	createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee)
 
 if __name__ == "__main__":
     main()
