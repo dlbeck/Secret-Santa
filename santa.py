@@ -15,7 +15,6 @@ def createPairings(participants):
 				if giftee != gifter:
 					pairMappings[gifter] = giftee
 					gifteesLeft.remove(giftee)
-					print(gifter + ' to ' + giftee)
 					break
 				elif len(gifteesLeft) == 1:
 					break
@@ -57,7 +56,6 @@ def main():
 	participantToEmail = json.loads(data)
 	  
 	gifterToGiftee = createPairings(list(participantToEmail.keys()))
-	print(gifterToGiftee)
 	createAndSendEmail(senderEmail, participantToEmail, gifterToGiftee)
 
 if __name__ == "__main__":
