@@ -1,7 +1,39 @@
 {
-	"Alice": "alice@email.com",
-	"Bob": "bob@email.com",
-	"Charlie": "charlie@email.com",
-	"Daniel": "daniel@email.com",
-	"Elliot": "elliot@email.com"
+	"Alice": {
+		"email": "alice@email.com",
+		"address": "aliceAddr",
+		"disallowedGiftees": [
+			"Bob"
+		]
+	},
+	"Bob": {
+		"email": "bob@email.com",
+		"address": "bobAddr",
+		"disallowedGiftees": [
+			"Alice",
+			"Charlie"
+		]
+	},
+	"Charlie": {
+		"email": "charlie@email.com",
+		"address": "charlieAddr",
+		"disallowedGiftees": [
+			"Bob"
+		]
+	},
+	"Dan": {
+		"email": "dan@email.com",
+		"address": "danAddr",
+		"disallowedGiftees": []
+	},
+	"Elliot": {
+		"email": "elliot@email.com",
+		"address": "elliotAddr",
+		"disallowedGiftees": []
+	},
+	"Francis": {
+		"email": "francis@email.com",
+		"address": "francisAddr",
+		"disallowedGiftees": []
+	}
 }
