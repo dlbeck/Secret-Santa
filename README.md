@@ -8,7 +8,7 @@ Script to create secret santa pairings and email participants who they are purch
 {
 	"Alice": "alice@email.com",
 	"Bob": "bob@email.com",
-	"Charlie": "charlie@email.com",
+	"Charlie": "charlie@email.com"
 }
 ```
 
