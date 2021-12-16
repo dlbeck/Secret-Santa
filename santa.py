@@ -52,7 +52,7 @@ def createAndSendEmail(senderEmail, participantsDict, gifterToGiftee):
 			server.login(senderEmail, senderEmailpass)
 			sendeeEmail = participantsDict[gifter]["email"]
 			server.sendmail(senderEmail, sendeeEmail, message)
-			print("email sent from " + senderEmail + " to " + senderEmail)
+			print("email sent from " + senderEmail + " to " + sendeeEmail)
 
 def main():
 	if len(sys.argv) != 3:
